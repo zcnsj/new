@@ -87,5 +87,7 @@
         <file>Images/zhishi.png</file>
         <file>Images/CloseB.png</file>
         <file>Images/minB.png</file>
+        <file>Compontents/ToolItem.qml</file>
+        <file>Compontents/ToolItems.qml</file>
     </qresource>
 </RCC>

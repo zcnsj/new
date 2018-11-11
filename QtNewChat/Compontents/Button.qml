@@ -26,7 +26,7 @@ Rectangle {
         hoverEnabled: true
         onHoveredChanged:{
 
-            console.log(name.source)
+
             if(containsMouse)
             {
                 root.color="#f45454"

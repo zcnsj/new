@@ -12,6 +12,7 @@ Window {
     title: qsTr("Hello World")
     flags: Qt.Window|Qt.FramelessWindowHint
     color: "transparent"
+    property real dpi:Screen.pixelDensity
     onActiveChanged: {
      if(active)
      {
@@ -23,7 +24,7 @@ Window {
     Rectangle{
         id:mainRect
         anchors.fill: parent
-        anchors.margins: 10
+        anchors.margins: 5
         radius: 8
         Rectangle{
             id:topRect
@@ -46,6 +47,9 @@ Window {
                        //如果mainwindow继承自QWidget,用setPos
                        mainwindow.setX(mainwindow.x+delta.x)
                        mainwindow.setY(mainwindow.y+delta.y)
+                        }
+                        onHoveredChanged: {
+                        console.log(Screen.pixelDensity)
                         }
             }
             Row{
@@ -85,16 +89,20 @@ Window {
             TabView {
                 id: frame
                 anchors.fill: parent
-                Tab { title: "信息" }
+
+                Tab { title: "信息"  }
                 Tab { title: "搜索" }
                 Tab { title: "回复" }
-                Tab { title: "工具" }
+                Tab {
+                    title: "工具"
+                    source: "./Compontents/ToolItems.qml"
+                }
                 Tab { title: "设置" }
                 style: TabViewStyle {
                     frameOverlap: 1
                     tab: Rectangle {
                         color: "#f5f5f5"
-                        implicitWidth: Math.max(tabTxt.width + 4, 88.8)
+                        implicitWidth:browserRect.width/4.9
                         implicitHeight: 35
 
                         Text {
@@ -114,6 +122,7 @@ Window {
                     }
                     frame: Rectangle
                     {
+                        anchors.margins:10
                         color: "#ffffff"
 
                     }
